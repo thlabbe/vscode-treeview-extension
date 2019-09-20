@@ -1,0 +1,71 @@
+{
+	"name": "copybook-outliner",
+	"displayName": "Copybook Outliner",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.38.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:cobol",
+		
+		"onView:copy-outline"
+
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "copy-outliner.refreshEntry",
+				"title": "Refresh Copy Outliner",
+				"icon":{
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "copy-outliner.refreshEntry",
+					"when": "view == copy-outline",
+					"group": "navigation"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "copy-outliner",
+					"title": "Copy Outliner",
+					"icon": "resources/dark/dependency.svg"
+				}
+			]
+		},
+		"views": {
+			"copy-outliner":[
+				{	
+					"id":"copy-outline",
+					"name": "Outline"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
