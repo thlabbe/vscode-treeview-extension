@@ -1,7 +1,0 @@
-out
-node_modules
-.vscode-test
-.vscode
-.vscodeignore
-.trash
-*.vsix
